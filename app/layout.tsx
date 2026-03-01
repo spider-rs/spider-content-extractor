@@ -49,7 +49,33 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={inter.className}>{children}
+      <body className={inter.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              name: "Spider Content Extractor",
+              url: "https://content-extractor.spider.cloud",
+              description:
+                "Extract titles, headings, text, images, and links from any website.",
+              applicationCategory: "WebApplication",
+              operatingSystem: "Any",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD",
+              },
+              author: {
+                "@type": "Organization",
+                name: "Spider",
+                url: "https://spider.cloud",
+              },
+            }),
+          }}
+        />
+        {children}
       </body>
     </html>
   );
